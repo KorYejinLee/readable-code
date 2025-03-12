@@ -52,7 +52,7 @@ public class StudyCafePassMachine {
 
                 StudyCafeLockerPass lockerPass = getStudyCafeLockerPassFrom(studyCafeFileHandler, selectedPass);
 
-                boolean lockerSelection = doesUserHasLockerPassWith(lockerPass);
+                boolean lockerSelection = checkUserHasLockerPassWith(lockerPass);
 
                 if (lockerSelection) {
                     outputHandler.showPassOrderSummary(selectedPass, lockerPass);
@@ -80,13 +80,17 @@ public class StudyCafePassMachine {
         return lockerPass;
     }
 
-    private boolean doesUserHasLockerPassWith(StudyCafeLockerPass lockerPass) {
+    private boolean checkUserHasLockerPassWith(StudyCafeLockerPass lockerPass) {
         boolean lockerSelection = false;
-        if (lockerPass != null) {
+        if (userHasLackerPassWith(lockerPass)) {
             outputHandler.askLockerPass(lockerPass);
             lockerSelection = inputHandler.getLockerSelection();
         }
         return lockerSelection;
+    }
+
+    private static boolean userHasLackerPassWith(StudyCafeLockerPass lockerPass) {
+        return lockerPass != null;
     }
 
 }
