@@ -67,9 +67,10 @@ public class StudyCafePassMachine {
 
                 if (lockerSelection) {
                     outputHandler.showPassOrderSummary(selectedPass, lockerPass);
-                } else {
-                    outputHandler.showPassOrderSummary(selectedPass, null);
+                    return;
                 }
+
+                outputHandler.showPassOrderSummary(selectedPass, null);
             }
         } catch (AppException e) {
             outputHandler.showSimpleMessage(e.getMessage());
